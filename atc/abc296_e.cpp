@@ -36,6 +36,6 @@ signed main()
             tp[find(find,x)] = 1;
         add(i,x);
     }
-
+    cout<<ans<<endl;h
     return 0;
 }
