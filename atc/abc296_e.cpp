@@ -36,7 +36,8 @@ signed main()
             tp[find(find,x)] = 1;
         add(i,x);
     }
-    asdf
+
+    
 
     return 0;
 }
