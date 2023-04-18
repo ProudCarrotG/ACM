@@ -10,8 +10,19 @@ if fileext():
     def input():
         return f.readline().strip()
 
-n, k = map(int, input().split())
-a = sorted(list(map(int,input().split())))
+import heapq
 
-print(n,k)
-print(a)
+n, k = map(int, input().split())
+a = list(map(int,input().split()))
+q = [0]
+st = set()
+
+for i in range(k):
+    x = heapq.heappop(q)
+    for j in a:
+        y = x + j
+        if y not in st:
+            st.add(y)
+            heapq.heappush(q, y)
+
+print(heapq.heappop(q))
