@@ -1,4 +1,7 @@
-    for i in range(len(s)-1):
-        if s[i] == 'T' and s[i+1] == 'T':
-            s[i] = 'P'
-            s[i+1] = 'C'
+if a > b:
+    ans += (a - b) + (b - 1) // b
+    a = a - ((a - b) + (b - 1) // b) * b
+elif a < b:
+    ans += (b - a) + (a - 1) // a
+    b = b - ((b - a) + (a - 1) // a) * a
+# print(a,b)
