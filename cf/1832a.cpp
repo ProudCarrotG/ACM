@@ -15,28 +15,27 @@ using namespace std;
 #define fg
 #endif
 
-void solve()
-{
-    // int n;
-    // cin >> n;
-    // vector<int> a(n);
-    // for (int i = 0; i < n; i++)
-    //     cin >> a[i];
+void solve() {
+    string s;
+    cin >> s;
 
-    // for (int i = 1; i <= 10; i++)
-    // {
-    //     for (int j = 0; j < n; j++)
-    //     {
-    //         cout << a[j] % i << ' ';
-    //     }
-    //     cout << endl;
-    // }
-    // cout << "-------------" << endl;
-    cout << __gcd(0, 10) << endl;
+    map<char, int> mp;
+    int tot = 0;
+    for (int i = 0; i < s.size() / 2; i++) {
+        mp[s[i]] += 1;
+        if (mp[s[i]] == 1)
+            tot++;
+        // cout<<i<<' ';
+    }
+
+
+    if (tot >= 2)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 }
 
-signed main()
-{
+signed main() {
 #ifndef ONLINE_JUDGE
     freopen(".in", "r", stdin);
 #else
