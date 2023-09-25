@@ -15,40 +15,42 @@ using namespace std;
 #define fg
 #endif
 
+void solve1() {
+    int n;
+    cin >> n;
+    vector<double> arr(n);
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    int K = 100;
+    while (K--) {
+        for (int i = 0; i < n; i++) {
+            arr[(i + 1) % n] += arr[i] / 2;
+            arr[i] /= 2;
+        }
+        for (int i = 0; i < n; i++)
+            cout << arr[i] << ' ';
+        cout << endl;
+    }
+}
+
 void solve() {
     int n;
     cin >> n;
-    int mp1[n][n];
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++) {
-            char c;
-            cin >> c;
-            mp1[i][j] = c - '0';
-        }
-
-    int mp2[n][n];
-    for (int i = 1; i < n - 1; i++)
-        for (int j = 1; j < n - 1; j++) {
-            mp2[i][j] = mp1[i][j];
-        }
-
-    for (int i = 0; i + 1 < n; i++)
-        mp2[0][i + 1] = mp1[0][i];
-
-    for (int i = 0; i + 1 < n; i++)
-        mp2[i + 1][n - 1] = mp1[i][n - 1];
-
-    for (int i = n - 1; i - 1 >= 0; i--)
-        mp2[n - 1][i - 1] = mp1[n - 1][i];
-
-    for (int i = n - 1; i - 1 >= 0; i--)
-        mp2[i - 1][0] = mp1[i][0];
-
+    vector<double> arr(n);
+    double tot = 0;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++)
-            cout << mp2[i][j];
-        cout << endl;
+        cin >> arr[i];
+        tot += arr[i];
     }
+
+    tot /= n + 1;
+
+    // cout << tot * 2 << ' ';
+    printf("%.f ", tot * 2);
+    for (int i = 1; i < n; i++)
+        // cout << tot << ' ';
+        printf("%.10f ", tot);
 }
 
 signed main() {
