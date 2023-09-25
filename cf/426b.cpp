@@ -18,10 +18,6 @@ using namespace std;
 void solve() {
     int n, m;
     cin >> n >> m;
-    if (n % 2) {
-        cout << n << endl;
-        return;
-    }
 
     int mp[n][m];
     for (int i = 0; i < n; i++)
@@ -30,7 +26,7 @@ void solve() {
 
     int ans = n;
     int flag = 1;
-    while (flag) {
+    while (flag && n % 2 != 1) {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n / 2; j++) {
                 if (mp[j][i] != mp[n - 1 - j][i]) {
