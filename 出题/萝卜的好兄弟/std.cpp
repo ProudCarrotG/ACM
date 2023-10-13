@@ -16,27 +16,29 @@ using namespace std;
 #endif
 
 void solve() {
+    freopen(".in", "r", stdin);
     int n;
     cin >> n;
     // cout << n << endl;
     // cout << pow(n, 1.0 / 3) << endl;
 
     vector<int> prime;
-    vector<int> mp(1e6 + 10);
-    for (int i = 2; i <= 1e6; i++) {
+    const int N = 1e4 + 10;
+    vector<int> mp(N+10);
+    for (int i = 2; i <= N; i++) {
         if (mp[i] == 0) {
             prime.push_back(i);
             // cout << i << endl;
         }
         for (int j = 0; j < prime.size(); j++) {
-            if (prime[j] * i > 1e6)
+            if (prime[j] * i >= N)
                 break;
             mp[prime[j] * i] = 1;
             if (i % prime[j] == 0)
                 break;
         }
     }
-    // cout << prime.size() << endl;
+    cout << prime.size() << endl;
 
     int res = 0;
     for (int i = 0; i < prime.size(); i++) {
