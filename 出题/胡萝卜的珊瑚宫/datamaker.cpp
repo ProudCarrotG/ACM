@@ -31,7 +31,7 @@ signed main() {
     }
 
     // cout << tot << endl;
-    int n = rand(tot / 1000);
+    int n = rand(max((int)1e5, tot / 1000));
     cout << n << endl;
 
     stack<int> q;

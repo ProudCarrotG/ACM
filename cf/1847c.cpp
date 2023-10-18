@@ -18,30 +18,19 @@ using namespace std;
 void solve() {
     int n;
     cin >> n;
-    vector<int> arr(n);
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-
-    map<int, int> mpp;
-    vector<int> mp;
-    int tmp = arr[n - 1];
-    mpp[n - 1] = arr[n - 1];
-    mp.push_back(tmp);
-    for (int i = n - 2; i >= 0; i--) {
-        tmp ^= arr[i];
-        mp.push_back(tmp);
-        mpp[i] = tmp;
-
-        // cout<<tmp<<endl;
-    }
-
+    vector<int> arr(n + 1);
+    set<int> st;
+    st.insert(0);
     int ans = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < mp.size(); j++) {
-            ans = max(mpp[i] ^ mp[j], ans);
-        }
-    }
 
+    for (int i = 1; i <= n; i++) {
+        cin >> arr[i];
+        arr[i] ^= arr[i - 1];
+        for (auto j : st) {
+            ans = max(ans, arr[i] ^ j);
+        }
+        st.insert(arr[i]);
+    }
     cout << ans << endl;
 }
 
