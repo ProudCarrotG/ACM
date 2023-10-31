@@ -1,53 +1,46 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define endl "\n"
-
+#include<bits/stdc++.h>
 using namespace std;
+#define int long long
+#define LL long long
+#define PII pair<int,int>
+#define umap unordered_map
+#define x first
+#define y second
+#define endl "\n"
+#ifndef ONLINE_JUDGE
+#define debug(x) cout<<#x<<' '<<x<<endl;
+#define fg cout<<"-----------------"<<endl;
+#else
+#define debug(x)
+#define fg
+#endif
 
-const int N = 1000 + 5;
-const double INF = LLONG_MAX / 2;
-double x[N], y[N], r[N];
-double p[N];
+void solve(){
 
-double dp[N][N];
+    multiset<int> st;
+    st.insert(2);
+    st.insert(2);
+    st.insert(3);
+    st.insert(3);
+    st.insert(4);
 
-double D(double x1, double y1, double x2, double y2) {
-    return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+    debug(st.size() - (distance(st.begin(),st.lower_bound(3))+st.count(3)));
 }
 
-int main() {
-    int n, m;
-    scanf("%d %d", &n, &m);
+signed main()
+{
+#ifndef ONLINE_JUDGE
+    freopen(".in","r",stdin);
+#else
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+#endif
 
-    for (int i = 1; i <= n; i++)
-        scanf("%lf %lf %lf %lf", &x[i], &y[i], &r[i], &p[i]);
+    int tt = 1;
+//  cin >> tt;
+    while(tt--)
+        solve();
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            if (i == j)
-                dp[i][j] = 0;
-            else if (D(x[i], y[i], x[j], y[j]) <= r[i] * r[i])
-                dp[i][j] = p[i] * r[i];
-            else
-                dp[i][j] = INF;
-        }
-    }
-
-    for (int k = 1; k <= n; k++) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) {
-                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j]);
-            }
-        }
-    }
-
-    int a, b;
-    while (m--) {
-        cin >> a >> b;
-
-        if (dp[a][b] != INF)
-            printf("%.6lf\n", dp[a][b]);
-        else
-            printf("-1\n");
-    }
+    return 0;
 }
